@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Postgres and Redis services are intentionally not defined yet —
+    # they arrive in Phase 1B once auth/session storage is designed.
