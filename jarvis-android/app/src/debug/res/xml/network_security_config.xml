@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Debug builds only: allow plain HTTP to localhost/10.0.2.2, reached via
+    `adb reverse tcp:8000 tcp:8000` for a locally running backend. This file
+    is in src/debug/, so Gradle merges it in for debug builds and it is
+    excluded from release builds, which fall back to the strict config in
+    src/main/res/xml/network_security_config.xml.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
